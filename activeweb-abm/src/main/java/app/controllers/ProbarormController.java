@@ -9,6 +9,6 @@ public class ProbarormController extends AppController{
         view("listaUsuarios",Usuario.obtenerTodosUsuario());
     }
     
-    public void nuevoEmpleado(){
+    public void nuevoUsuario(){
     }
 }

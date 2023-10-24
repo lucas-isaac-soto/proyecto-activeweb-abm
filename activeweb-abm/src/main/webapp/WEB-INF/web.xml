@@ -45,8 +45,30 @@
     
     <!--ACA ABAJO VAN A IR LAS SEGURIDADES A CIERTOS CONTROLADORES-->
     
+    <!--Restriccion total a la aplicacion, debe logearse-->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>WebContraint</web-resource-name>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        
+        <auth-constraint>
+            <role-name>ver</role-name>
+        </auth-constraint>
+    </security-constraint>
     
     <!--
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>LirosContraint</web-resource-name>
+            <url-pattern>/libros/*</url-pattern>
+        </web-resource-collection>
+        
+        <auth-constraint>
+            <role-name>ver</role-name>
+        </auth-constraint>
+    </security-constraint>
+    
         HACIA QUE RECURSO LOGIN VAMOS A REDIGIR
     -->
     <login-config>
