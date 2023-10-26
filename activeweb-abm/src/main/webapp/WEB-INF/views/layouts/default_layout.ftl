@@ -8,7 +8,10 @@
     </head>
     
     <body>
-        
+        <header>
+            <p>${session.usuario}</p>
+            <a href="${context_path}/home/cerrarSesion">Cerrar Sesion</a>
+        </header>
         <div class="contenido">
             ${page_content}
         </div>
