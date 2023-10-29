@@ -5,6 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        body {
+            background-color: #718355;
+        }
+
+        .tabla-lista th,
+        .tabla-lista td {
+            background-color: #CFE1B9;
+
+        }
+
+        .tabla-lista thead {
+            border-bottom: 5px solid black;
+        }
+
+        .table-foot {
+            width: 100%;
+        }
+
+        nav ul {
+            margin-bottom: 0;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -21,57 +48,38 @@
                         <th>Apellido</th>
                         <th>alias</th>
                         <th>E-Mail</th>
-                        <th>Celular</th>
-                        <th>Fecha Alta</th>                        
-                        <#if session.rolabm == true>
-                            <th>Operaciones</th>
-                        </#if>
+                        <th>Fecha Alta</th>
+                        <th>Operaciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <#list listaUsuarios as usuario>
-                        <tr>
-                            <td >${usuario.id_usuario}</td>
-                            <td >${usuario.nombre}</td>
-                            <td >${usuario.apellido}</td>
-                            <td >${usuario.alias}</td>
-                            <td style="display:none;">${usuario.contrasenia}</td>
-                            <td >${usuario.email_principal}</td>
-                            <td style="display:none;">${usuario.email_secundario}</td>
-                            <td >${usuario.numero_celular}</td>
-                            <td style="display:none;">${usuario.id_tipo_usuario}</td>
-                            <td >${usuario.fecha_alta}</td>
-                            <#if session.rolabm == true>
-                                <td>
-                                    <a class="btn btn-warning" href="#">
-                                        <i class="bi bi-info-square"></i>
-                                    </a>
-                                    <a class="btn btn-primary" href="#">
-                                        <i class="bi bi-pen"></i>
-                                    </a>
-                                    <button type="button" class="btn btn-danger borrar-usuario" data-bs-toggle="modal"
-                                        data-bs-target="#ModalBorrarUsuario">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
-                                </td>
-                            </#if>
-                        </tr>
-                    </#list>
+                    <tr>
+                        <td>1</td>
+                        <td>Lucas</td>
+                        <td>Soto</td>
+                        <td>LucSot</td>
+                        <td>LucSot@ASDSAD.COM</td>
+                        <td>01-01-2023</td>
+                        <td>
+                            <button class="btn btn-warning"><i class="bi bi-info-square"></i></button>
+                            <button class="btn btn-primary"><i class="bi bi-pen"></i></button>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                data-bs-target="#ModalBorrarUsuario">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
                 </tbody>
                 <tfoot>
                     <tr>
-                        <#if session.rolabm == true>
-                            <#list 1..7 as number>
-                                <td></td>
-                            </#list>
-                        <#else>
-                            <#list 1..6 as number>
-                                <td></td>
-                            </#list>
-                        </#if>
-
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                         <td>
-                            <nav class="paginacion" aria-label="Page navigation example">
+                            <nav aria-label="Page navigation example">
                                 <ul class="pagination justify-content-end">
                                     <li class="page-item">
                                         <a class="page-link" href="#" aria-label="Previous">
@@ -90,11 +98,12 @@
                             </nav>
                         </td>
                     </tr>
-
                 </tfoot>
             </table>
         </div>
     </div>
+
+
 
     <!-- Modal -->
     <div class="modal fade" id="ModalBorrarUsuario" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -108,19 +117,41 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    Usted esta a punto de borrar al siguiente usuario:
                     <table class="table table-danger">
                         <tbody>
-                            <tr> <td class="modal-id"></td> </tr>
-                            <tr> <td class="modal-nombre"></td> </tr>
-                            <tr> <td class="modal-apellido"></td> </tr>
-                            <tr> <td class="modal-alias"></td> </tr>
-                            <tr> <td class="modal-contrasenia"></td> </tr>
-                            <tr> <td class="modal-email-primario"></td> </tr>
-                            <tr> <td class="modal-email-secundario"></td> </tr>
-                            <tr> <td class="modal-celular"></td></tr>
-                            <tr> <td class="modal-tipo-usuario"></td></tr>
-                            <tr> <td class="modal-fecha-alta"></td></tr>
+                            <tr>
+                                <td>ID</td>
+                            </tr>
+                            <tr>
+                                <td>Nombre</td>
+                            </tr>
+                            <tr>
+                                <td>Apellido</td>
+                            </tr>
+                            <tr>
+                                <td>alias</td>
+                            </tr>
+                            <tr>
+                                <td>contrasenia</td>
+                            </tr>
+                            <tr>
+                                <td>Email</td>
+                            </tr>
+                            <tr>
+                                <td>Email</td>
+                            </tr>
+                            <tr>
+                                <td>numero_celular</td>
+                            </tr>
+                            <tr>
+                                <td>id_tipo_usuario</td>
+                            </tr>
+                            <tr>
+                                <td>fecha_alta</td>
+                            </tr>
                         </tbody>
+                    </table>
 
                     <input id="acepto-borrar" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                     <label class="form-check-label" for="flexCheckDefault">
@@ -136,19 +167,18 @@
                     </button>
 
                     <!--NO OLVIDAR PONER LA URL AL CONTROLADOR QUE CIERRA LA SESION-->
-                    <p id="url-borrar" style="display:none;">${context_path}/usuario/borrarUsuario/</p>
-                    
-                    <a id="boton-borrar" href="${context_path}/usuario/borrarUsuario/" class="btn btn-danger disabled">
+                    <a id="boton-borrar" href="" class="btn btn-danger disabled">
                         Borrar Usuario
                     </a>
-                    Usted esta a punto de borrar al siguiente usuario: <br>
+
                 </div>
             </div>
         </div>
     </div>
-
-
-    <script src="${context_path}/js/funciones_lista.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="./funciones-lista.js"></script>
 </body>
 
 </html>

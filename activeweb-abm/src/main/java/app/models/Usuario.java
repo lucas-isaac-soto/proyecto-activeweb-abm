@@ -32,6 +32,10 @@ public class Usuario extends Model{
         nuevo.saveIt();
     }
     
+    public static Usuario buscarUsuario(int usuarioId){
+        return Usuario.findById(usuarioId);
+    }
+    
     public static void borrar(int idUsuario){
         //validaciones
        Usuario.delete("id_usuario = ?" ,idUsuario);

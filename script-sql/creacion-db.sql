@@ -28,3 +28,4 @@ create table usuario(
 	FOREIGN KEY (id_tipo_usuario) 
 	REFERENCES tipo_usuario(id_tipo)
 );
+

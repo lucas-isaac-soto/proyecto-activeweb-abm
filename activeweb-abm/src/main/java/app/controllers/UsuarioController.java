@@ -3,6 +3,7 @@ package app.controllers;
 import app.models.Usuario;
 import java.util.List;
 import org.javalite.activeweb.AppController;
+import org.javalite.common.JsonHelper;
 
 public class UsuarioController extends AppController{
     public void listaUsuarios(){
@@ -10,7 +11,12 @@ public class UsuarioController extends AppController{
         
         view("listaUsuarios",usuarios);
     }
-     
+    public void buscarUsuario(){
+        int usuarioId = Integer.valueOf(getId());
+        Usuario buscado = Usuario.buscarUsuario(usuarioId);
+        respond(JsonHelper.toJsonString(buscado)).contentType("application/json");
+    }
+    
     public void agregarUsuario(){
         String nombre = "nuevo";
         String apellido = "nuevo";

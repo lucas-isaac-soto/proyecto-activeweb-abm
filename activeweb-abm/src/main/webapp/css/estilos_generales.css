@@ -10,3 +10,26 @@ nav {
 .logo i {
       color: #87986A;
 }
+
+.tabla-lista th,
+.tabla-lista td {
+    background-color: #CFE1B9;
+
+}
+
+.tabla-lista thead {
+    border-bottom: 5px solid black;
+}
+
+.table-foot {
+    width: 100%;
+}
+
+nav ul {
+    margin-bottom: 0;
+}
+
+.paginacion {
+    background-color: #CFE1B9;
+}
+
