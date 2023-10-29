@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+
+    <style>
+        body {
+            background-color: #718355;
+        }
+
+        /* Chrome, Safari, Edge, Opera */
+        #usuario-id::-webkit-outer-spin-button,
+        #usuario-id::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        #usuario-id[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        .modificar-cuerpo {
+            background-color: #CFE1B9;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container modificar-cuerpo">
+        <div class="row">
+            <h2 class="text-center">Modificacion del Usuario ID</h2>
+        </div>
+        <div class="row">
+            nombre text NOT NULL CHECK ( length(nombre) > 3),
+            apellido text NOT NULL CHECK ( length(apellido) > 3),
+            alias text UNIQUE NOT NULL CHECK ( length(alias) > 3),
+            contrasenia text NOT NULL CHECK ( length(contrasenia) > 7),
+            email_principal text UNIQUE NOT NULL CHECK ( length(email_principal) > 3),
+            email_secundario text NOT NULL CHECK ( length(email_secundario) > 3),
+            numero_celular text NOT NULL CHECK (length(numero_celular) > 6),
+            id_tipo_usuario int NOT NULL,
+            <form action="">
+                <div class="row">
+                    <div class="col-2 text-center"><label for="usuario-id" class="form-label fs-4">id</label>
+                    </div>
+                    <div class="col-1">
+                        <input type="number" class="form-control col-auto" id="usuario-id" disabled required>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-2 text-center"><label for="usuario-nombre" class="form-label fs-4">Nombre</label>
+                    </div>
+                    <div class="col-3">
+                        <input type="text" class="form-control col-auto" id="usuario-nombre" required>
+                    </div>
+                    <div class="col fs-5">
+                        <div class="valid-feedback">
+                            Valido
+                        </div>
+                        <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                            Ingrese un Nombre Valido porfavor
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2 text-center"><label for="usuario-apellido"
+                            class="form-label fs-4">Apellido</label>
+                    </div>
+                    <div class="col-3">
+                        <input type="text" class="form-control col-auto" id="usuario-apellido" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2 text-center"><label for="usuario-alias" class="form-label fs-4">Alias</label>
+                    </div>
+                    <div class="col-3">
+                        <input type="text" class="form-control col-auto" id="usuario-alias" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2 text-center"><label for="usuario-contrasenia"
+                            class="form-label fs-4">Contrasenia</label>
+                    </div>
+                    <div class="col-3">
+                        <input type="text" class="form-control col-auto" id="usuario-contrasenia" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2 text-center"><label for="usuario-email1" class="form-label fs-4">Email
+                            Principal</label>
+                    </div>
+                    <div class="col-3">
+                        <input type="text" class="form-control col-auto" id="usuario-email1" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2 text-center"><label for="usuario-email2" class="form-label fs-4">Email
+                            Secundario</label>
+                    </div>
+                    <div class="col-3">
+                        <input type="text" class="form-control col-auto" id="usuario-email2" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2 text-center"><label for="usuario-celular" class="form-label fs-4">Celular</label>
+                    </div>
+                    <div class="col-3">
+                        <input type="text" class="form-control col-auto" id="usuario-celular" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2 text-center"><label for="usuario-tipo" class="form-label fs-4">Tipo
+                            Usuario</label>
+                    </div>
+                    <div class="col-3">
+                        <select class="form-select" required>
+                            <option value="1">Sistema</option>
+                            <option value="2">Administrador</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col text-end mb-3">
+                        <a href="" class="btn btn-secondary">Volver</a>
+                        <input type="submit" class="btn btn-success" value="Modificar">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
