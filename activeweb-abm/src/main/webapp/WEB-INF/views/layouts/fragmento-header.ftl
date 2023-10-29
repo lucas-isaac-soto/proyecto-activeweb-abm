@@ -4,31 +4,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-
-  <style>
-    body {
-      background-color: #718355;
-    }
-
-    nav {
-      background-color: #E9F5DB;
-    }
-
-    .logo i {
-      color: #87986A;
-    }
-  </style>
 </head>
 
 <body>
   <div class="container-fluid">
     <nav class="navbar row">
       <div class="col-2">
-        <a class="navbar-brand fs-4 logo" href="#">
-          <i class="bi bi-person-arms-up"></i>Sys-Orden</a>
+        <a class="navbar-brand fs-4 logo" href="${context_path}/home/index">
+          <i class="bi bi-person-arms-up"></i>Sys-Orden
+        </a>
       </div>
       <div class="col-4 text-center pt-3">
         <p id="fecha" class="fs-4"></p>
@@ -41,11 +25,11 @@
       <div class="col-2">
         <div class="btn-group">
           <button type="button" class="btn dropdown-toggle fs-5" data-bs-toggle="dropdown" aria-expanded="false">
-            Usuario
+            ${session.usuario}
           </button>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Perfil</a></li>
-            <li><a class="dropdown-item" href="#">Lista Usuarios</a></li>
+            <li><a class="dropdown-item" href="${context_path}/usuario/listaUsuarios">Lista Usuarios</a></li>
             <li><a class="dropdown-item" href="#">Prox. funcionalidad</a></li>
             <li>
               <hr class="dropdown-divider" />
@@ -83,18 +67,15 @@
           </button>
 
           <!--NO OLVIDAR PONER LA URL AL CONTROLADOR QUE CIERRA LA SESION-->
-          <a href="" class="btn btn-danger">Cerrar Sesion</a>
+          <a href="${context_path}/home/cerrarSesion" class="btn btn-danger">Cerrar Sesion</a>
 
         </div>
       </div>
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"></script>
+  
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
-  <script src="./fecha-hora.js"></script>
 </body>
 
 </html>
