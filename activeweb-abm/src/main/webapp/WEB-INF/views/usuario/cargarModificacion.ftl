@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
 
     <style>
         body {
@@ -24,26 +22,21 @@
         #usuario-id[type=number] {
             -moz-appearance: textfield;
         }
-
-        .modificar-cuerpo {
-            background-color: #CFE1B9;
-            border-radius: 10px;
-        }
     </style>
 </head>
 
 <body>
-    <div class="container modificar-cuerpo">
+    <div class="container modificar-cuerpo mt-5">
         <div class="row">
             <h2 class="text-center">Modificacion del Usuario ID</h2>
         </div>
         <div class="row">
-            <form action="">
+            <form action="${context_path}/usuario/modificarUsuario/${usuarioBuscado.id_usuario}" method="post">
                 <div class="row">
                     <div class="col-3 text-center"><label for="usuario-id" class="form-label fs-4">id</label>
                     </div>
                     <div class="col-1">
-                        <input type="number" class="form-control col-auto" id="usuario-id" disabled required>
+                        <input type="number" class="form-control col-auto" id="usuario-id" disabled required value="${usuarioBuscado.id_usuario}">
                     </div>
 
                 </div>
@@ -51,7 +44,7 @@
                     <div class="col-3 text-center"><label for="usuario-nombre" class="form-label fs-4">Nombre</label>
                     </div>
                     <div class="col-3">
-                        <input type="text" class="form-control col-auto" id="usuario-nombre" required>
+                        <input type="text" class="form-control col-auto" id="usuario-nombre" required value="${usuarioBuscado.nombre}">
                     </div>
                     <div class="col fs-5">
                         <div class="valid-feedback">
@@ -67,14 +60,14 @@
                             class="form-label fs-4">Apellido</label>
                     </div>
                     <div class="col-3">
-                        <input type="text" class="form-control col-auto" id="usuario-apellido" required>
+                        <input type="text" class="form-control col-auto" id="usuario-apellido" required value="${usuarioBuscado.apellido}">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-3 text-center"><label for="usuario-alias" class="form-label fs-4">Alias</label>
                     </div>
                     <div class="col-3">
-                        <input type="text" class="form-control col-auto" id="usuario-alias" required>
+                        <input type="text" class="form-control col-auto" id="usuario-alias" required value="${usuarioBuscado.alias}">
                     </div>
                 </div>
                 <div class="row">
@@ -82,7 +75,7 @@
                             class="form-label fs-4">Contrasenia</label>
                     </div>
                     <div class="col-3">
-                        <input type="text" class="form-control col-auto" id="usuario-contrasenia" required>
+                        <input type="text" class="form-control col-auto" id="usuario-contrasenia" required value="${usuarioBuscado.contrasenia}">
                     </div>
                 </div>
                 <div class="row">
@@ -90,7 +83,7 @@
                             Principal</label>
                     </div>
                     <div class="col-3">
-                        <input type="text" class="form-control col-auto" id="usuario-email1" required>
+                        <input type="text" class="form-control col-auto" id="usuario-email1" required value="${usuarioBuscado.email_principal}">
                     </div>
                 </div>
                 <div class="row">
@@ -98,14 +91,14 @@
                             Secundario</label>
                     </div>
                     <div class="col-3">
-                        <input type="text" class="form-control col-auto" id="usuario-email2" required>
+                        <input type="text" class="form-control col-auto" id="usuario-email2" required value="${usuarioBuscado.email_secundario}">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-3 text-center"><label for="usuario-celular" class="form-label fs-4">Celular</label>
                     </div>
                     <div class="col-3">
-                        <input type="text" class="form-control col-auto" id="usuario-celular" required>
+                        <input type="text" class="form-control col-auto" id="usuario-celular" required value="${usuarioBuscado.numero_celular}">
                     </div>
                 </div>
                 <div class="row">
@@ -113,7 +106,7 @@
                             Usuario</label>
                     </div>
                     <div class="col-3">
-                        <select class="form-select" required>
+                        <select class="form-select" required value="${usuarioBuscado.id_tipo_usuario}">
                             <option value="1">Sistema</option>
                             <option value="2">Administrador</option>
                         </select>
@@ -123,7 +116,7 @@
 
                 <div class="row">
                     <div class="col text-end mb-3">
-                        <a href="" class="btn btn-secondary">Volver</a>
+                        <a href="${context_path}/usuario/listaUsuarios" class="btn btn-secondary">Volver</a>
                         <input type="submit" class="btn btn-success" value="Modificar">
                     </div>
                 </div>
@@ -131,10 +124,6 @@
         </div>
     </div>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
 </body>
 
 </html>

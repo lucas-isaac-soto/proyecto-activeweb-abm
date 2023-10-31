@@ -46,7 +46,7 @@
                                     <a class="btn btn-warning" href="#">
                                         <i class="bi bi-info-square"></i>
                                     </a>
-                                    <a class="btn btn-primary" href="#">
+                                    <a class="btn btn-primary" href="${context_path}/usuario/cargarModificacion/${usuario.id_usuario}">
                                         <i class="bi bi-pen"></i>
                                     </a>
                                     <button type="button" class="btn btn-danger borrar-usuario" data-bs-toggle="modal"
