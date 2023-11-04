@@ -45,13 +45,15 @@ public class Usuario extends Model{
     public static void modificar(Map<String,String> parametros) {
         Usuario modificado = Usuario.findById(Integer.valueOf( parametros.get("id")));
         
-        modificado.set("nombre", parametros.get("nombre")).saveIt();
-        modificado.set("apellido",parametros.get("apellido")).saveIt();
-        modificado.set("alias", parametros.get("alias")).saveIt();
-        modificado.set("contrasenia", parametros.get("contrasenia")).saveIt();
-        modificado.set("email_principal",parametros.get("emailPrincipal")).saveIt();
-        modificado.set("email_secundario",parametros.get("emailSecundario")).saveIt();
-        modificado.set("numero_celular",parametros.get("celular")).saveIt();
-        modificado.set("id_tipo_usuario",Integer.valueOf(parametros.get("tipoUsuario"))).saveIt();
+        modificado.set("nombre", parametros.get("nombre"));
+        modificado.set("apellido",parametros.get("apellido"));
+        modificado.set("alias", parametros.get("alias"));
+        modificado.set("contrasenia", parametros.get("contrasenia"));
+        modificado.set("email_principal",parametros.get("email1"));
+        modificado.set("email_secundario",parametros.get("email2"));
+        modificado.set("numero_celular",parametros.get("celular"));
+        modificado.set("id_tipo_usuario",Integer.valueOf(parametros.get("usuario-tipo")));
+        
+        modificado.saveIt();
     }
 }

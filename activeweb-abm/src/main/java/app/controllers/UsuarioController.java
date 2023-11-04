@@ -44,30 +44,32 @@ public class UsuarioController extends AppController{
     
     @POST
     public void modificarUsuario(){
-        //Map<String,String> valores = new HashMap<>();
+        Map<String,String> valores = new HashMap<>();
         
-//        String idUsuario = getId();
-//        String nombre = getHttpServletRequest().getParameter("usuario-nombre");
-//        String apellido = getHttpServletRequest().getParameter("usuario-apellido");
-//        String alias = getHttpServletRequest().getParameter("usuario-alias");
-//        String contrasenia = getHttpServletRequest().getParameter("usuario-contrasenia");
-//        String emailPrincipal = getHttpServletRequest().getParameter("usuario-email1");
-//        String emailSecundario = getHttpServletRequest().getParameter("usuario-email2");
-//        String celular = getHttpServletRequest().getParameter("usuario-celular");
-//        String tipoUsuario = getHttpServletRequest().getParameter("usuario-tipo");
-//        
-//        valores.put("id", idUsuario);
-//        valores.put("nombre", nombre);
-//        valores.put("apellido", apellido);
-//        valores.put("alias", alias);
-//        valores.put("contrasenia", contrasenia);
-//        valores.put("email1", emailPrincipal);
-//        valores.put("email2", emailSecundario);
-//        valores.put("celular", celular);
-//        valores.put("tipoUsuario", tipoUsuario);
+        String idUsuario = getId();
+        String nombre = getHttpServletRequest().getParameter("usuario-nombre");
+        String apellido = param("usuario-apellido");
+        String alias = param("usuario-alias");
+        String contrasenia = param("usuario-contrasenia");
+        String emailPrincipal = param("usuario-email1");
+        String emailSecundario = param("usuario-email2");
+        String celular = param("usuario-celular");
+        String tipoUsuario = param("usuario-tipo");
+            
         
-        //Usuario.modificar(valores);
+        valores.put("id", idUsuario);
+        valores.put("nombre", nombre);
+        valores.put("apellido", apellido);
+        valores.put("alias", alias);
+        valores.put("contrasenia", contrasenia);
+        valores.put("email1", emailPrincipal);
+        valores.put("email2", emailSecundario);
+        valores.put("celular", celular);
+        valores.put("usuario-tipo", tipoUsuario);
         
+        Usuario.modificar(valores);
+        
+        redirect(UsuarioController.class, "listaUsuarios");
     }
     
     public void cargarModificacion(){
