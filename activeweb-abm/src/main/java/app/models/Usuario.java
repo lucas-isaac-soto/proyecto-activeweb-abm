@@ -1,23 +1,25 @@
 package app.models;
 
-
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import org.javalite.activejdbc.Model;
+import org.javalite.activejdbc.annotations.BelongsTo;
 import org.javalite.activejdbc.annotations.IdName;
 import org.javalite.activejdbc.annotations.Table;
 
 @Table("usuario")
 @IdName("id_usuario")
+@BelongsTo(foreignKeyName = "id_tipo_usuario", parent = TipoUsuario.class)
 public class Usuario extends Model{
     
     public static List<Usuario> obtenerTodosUsuario(){
-        return Usuario.findAll();
+        return Usuario.findAll().orderBy("fecha_alta").include(TipoUsuario.class);
     }
     
     public static void crearUsuario(String nombre,String apellido,String alias,String contrasenia,
-            String emailPrincipal, String emailSecundario,String numeroCelular,int tipoUsuario, 
-            String fechaAlta){
+            String emailPrincipal, String emailSecundario,String numeroCelular,String tipoUsuario){
+        
         //validaciones
         Usuario nuevo = new Usuario();
         nuevo.set("nombre", nombre);
@@ -27,8 +29,10 @@ public class Usuario extends Model{
         nuevo.set("email_principal",emailPrincipal);
         nuevo.set("email_secundario",emailSecundario);
         nuevo.set("numero_celular",numeroCelular);
-        nuevo.set("id_tipo_usuario",tipoUsuario);
-        nuevo.setTimestamp("fecha_alta",fechaAlta);
+        nuevo.set("id_tipo_usuario",Integer.valueOf(tipoUsuario));
+        
+        Date fecha = new Date();
+        nuevo.setTimestamp("fecha_alta",fecha.getTime());
         
         nuevo.saveIt();
     }

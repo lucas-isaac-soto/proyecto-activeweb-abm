@@ -21,17 +21,21 @@ public class UsuarioController extends AppController{
         respond(JsonHelper.toJsonString(buscado)).contentType("application/json");
     }
     
+    public void cargarNuevo(){    
+    }
+    
+    @POST
     public void agregarUsuario(){
-        String nombre = "nuevo";
-        String apellido = "nuevo";
-        String alias = "nuevoAlias";
-        String contrasenia = "123456789";
-        String emailPrincipal = "123123123123";
-        String emailSecundario = "123123123123";        
-        String numeroCelular = "1111111111";        
-        int tipoUsuario = 2;
-        String fechaAlta = "2023-05-05 01:00:00";
-        Usuario.crearUsuario(nombre, apellido, alias, contrasenia, emailPrincipal, emailSecundario, numeroCelular, tipoUsuario, fechaAlta);
+        String nombre = getHttpServletRequest().getParameter("usuario-nombre");
+        String apellido = param("usuario-apellido");
+        String alias = param("usuario-alias");
+        String contrasenia = param("usuario-contrasenia");
+        String emailPrincipal = param("usuario-email1");
+        String emailSecundario = param("usuario-email2");
+        String celular = param("usuario-celular");
+        String tipoUsuario = param("usuario-tipo");
+        
+        Usuario.crearUsuario(nombre, apellido, alias, contrasenia, emailPrincipal, emailSecundario, celular, tipoUsuario);
         
         redirect(UsuarioController.class, "listaUsuarios");
     }

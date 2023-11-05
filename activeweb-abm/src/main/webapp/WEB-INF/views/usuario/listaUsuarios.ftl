@@ -40,7 +40,7 @@
                             <td >${usuario.email_principal}</td>
                             <td style="display:none;">${usuario.email_secundario}</td>
                             <td >${usuario.numero_celular}</td>
-                            <td style="display:none;">${usuario.id_tipo_usuario}</td>
+                            <td style="display:none;">${usuario.tipo_usuario.nombre_tipo}</td>
                             <td >${usuario.fecha_alta}</td>
                             <#if session.rolabm == true>
                                 <td>
