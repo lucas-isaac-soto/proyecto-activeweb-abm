@@ -5,24 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
-    <style>
-        body {
-            background-color: #718355;
-        }
-
-        /* Chrome, Safari, Edge, Opera */
-        #usuario-id::-webkit-outer-spin-button,
-        #usuario-id::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-
-        /* Firefox */
-        #usuario-id[type=number] {
-            -moz-appearance: textfield;
-        }
-    </style>
 </head>
 
 <body>
@@ -105,9 +87,9 @@
                             Usuario</label>
                     </div>
                     <div class="col-3">
-                        <select class="form-select" name="usuario-tipo" id="usuario-tipo" required>
-                            <option value="1">Sistema</option>
-                            <option value="2">Administrador</option>
+                        <select class="form-select" name="usuario-tipo" id="usuario-tipo" value="${usuarioBuscado.id_tipo_usuario}" required>
+                            <option value="1" <#if "1" == "${usuarioBuscado.id_tipo_usuario}"> selected </#if> >Sistema</option>
+                            <option value="2" <#if "2" == "${usuarioBuscado.id_tipo_usuario}"> selected </#if> >Administrador</option>
                         </select>
                     </div>
                 </div>

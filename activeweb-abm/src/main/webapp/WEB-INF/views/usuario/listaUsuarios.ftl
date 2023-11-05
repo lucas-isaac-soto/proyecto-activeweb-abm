@@ -8,9 +8,10 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container mt-5">
         <div class="row">
             <h2 class="text-center">Lista de Usuarios</h2>
+            <a class="btn btn-primary" href="${context_path}/usuario/cargarNuevo"> Nuevo Usuario</a>
         </div>
         <div class="row">
             <table class="table table-striped table-hover tabla-lista">
@@ -43,7 +44,7 @@
                             <td >${usuario.fecha_alta}</td>
                             <#if session.rolabm == true>
                                 <td>
-                                    <a class="btn btn-warning" href="#">
+                                    <a class="btn btn-warning" href="${context_path}/usuario/informacion/${usuario.id_usuario}">
                                         <i class="bi bi-info-square"></i>
                                     </a>
                                     <a class="btn btn-primary" href="${context_path}/usuario/cargarModificacion/${usuario.id_usuario}">

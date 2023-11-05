@@ -79,5 +79,9 @@ public class UsuarioController extends AppController{
         view("usuarioBuscado",buscado);
     }
     
-    
+    public void informacion(){
+        Integer idUsuario = Integer.valueOf(getId());
+        Usuario buscado = Usuario.buscarUsuario(idUsuario);
+        view("usuarioBuscado",buscado);
+    }
 }

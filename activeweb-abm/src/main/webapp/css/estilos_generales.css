@@ -37,3 +37,16 @@ nav ul {
             background-color: #CFE1B9;
             border-radius: 10px;
 }
+
+
+/* Chrome, Safari, Edge, Opera */
+#usuario-id::-webkit-outer-spin-button,
+#usuario-id::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+#usuario-id[type=number] {
+    -moz-appearance: textfield;
+}
