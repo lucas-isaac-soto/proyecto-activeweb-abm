@@ -50,3 +50,7 @@ nav ul {
 #usuario-id[type=number] {
     -moz-appearance: textfield;
 }
+
+.mostrar-input {
+    display: block;
+}

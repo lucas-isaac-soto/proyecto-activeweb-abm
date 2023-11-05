@@ -29,6 +29,10 @@
             background-color: #CFE1B9;
             border-radius: 10px;
         }
+
+        .mostrar-input {
+            display: block;
+        }
     </style>
 </head>
 
@@ -38,85 +42,148 @@
             <h2 class="text-center">Modificacion del Usuario ID</h2>
         </div>
         <div class="row">
-            <form action="">
+            <form action="" onsubmit="return validarDatosUsuario()">
+
                 <div class="row">
                     <div class="col-3 text-center"><label for="usuario-id" class="form-label fs-4">id</label>
                     </div>
                     <div class="col-1">
                         <input type="number" class="form-control col-auto" id="usuario-id" disabled required>
                     </div>
-
                 </div>
-                <div class="row">
+
+
+                <div class="row mb-3">
                     <div class="col-3 text-center"><label for="usuario-nombre" class="form-label fs-4">Nombre</label>
                     </div>
                     <div class="col-3">
-                        <input type="text" class="form-control col-auto" id="usuario-nombre" required>
-                    </div>
-                    <div class="col fs-5">
-                        <div class="valid-feedback">
-                            Valido
+                        <input type="text" class="form-control col-auto" id="usuario-nombre"
+                            title="Un nombre debe tener minimo 3 letras y no debe tener numeros" required>
+                        <div class="valid-feedback fs-5">
+                            Nombre Correcto!
                         </div>
-                        <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                            Ingrese un Nombre Valido porfavor
+                        <div class="invalid-feedback fs-5">
+                            Nombre Incorrecto, no debe tener numeros ni caracteres especiales y debe tener 3 o mas
+                            letras
                         </div>
                     </div>
                 </div>
-                <div class="row">
+
+
+                <div class="row mb-3">
                     <div class="col-3 text-center"><label for="usuario-apellido"
                             class="form-label fs-4">Apellido</label>
                     </div>
                     <div class="col-3">
                         <input type="text" class="form-control col-auto" id="usuario-apellido" required>
+                        <div class="valid-feedback fs-5">
+                            Apellido Correcto!
+                        </div>
+                        <div class="invalid-feedback fs-5">
+                            Apellido Incorrecto, no debe tener numeros ni caracteres especiales y debe tener 3 o mas
+                            letras
+                        </div>
                     </div>
                 </div>
-                <div class="row">
+
+
+                <div class="row mb-3">
                     <div class="col-3 text-center"><label for="usuario-alias" class="form-label fs-4">Alias</label>
                     </div>
                     <div class="col-3">
                         <input type="text" class="form-control col-auto" id="usuario-alias" required>
+                        <div class="valid-feedback fs-5">
+                            Alias Correcto
+                        </div>
+                        <div class="invalid-feedback fs-5">
+                            Alias Incorrecto, debe tener 3 o mas caracteres y solo usar numeros, letras y ( - o _ ) y no
+                            usar espacios
+                        </div>
                     </div>
                 </div>
-                <div class="row">
+
+
+                <div class="row mb-3">
                     <div class="col-3 text-center"><label for="usuario-contrasenia"
                             class="form-label fs-4">Contrasenia</label>
                     </div>
                     <div class="col-3">
                         <input type="text" class="form-control col-auto" id="usuario-contrasenia" required>
+                        <div class="valid-feedback fs-5">
+                            Contrasenia Correcta
+                        </div>
+                        <div class="invalid-feedback fs-5">
+                            Contrasenia Incorrecta, debe tener entre 7 y 16 caracteres y solo usar numeros, letras y ( -
+                            o _ ) y no usar espacios
+                        </div>
                     </div>
                 </div>
-                <div class="row">
+
+
+                <div class="row mb-3">
                     <div class="col-3 text-center"><label for="usuario-email1" class="form-label fs-4">Email
                             Principal</label>
                     </div>
                     <div class="col-3">
                         <input type="text" class="form-control col-auto" id="usuario-email1" required>
+                        <div class="valid-feedback fs-5">
+                            Email Correcto!
+                        </div>
+                        <div class="invalid-feedback fs-5">
+                            Email Incorrecto, ingrese un formato correcto de Email y no debe ser igual al Secundario, no
+                            debe tener espacios
+                        </div>
                     </div>
                 </div>
-                <div class="row">
+
+
+                <div class="row mb-3">
                     <div class="col-3 text-center"><label for="usuario-email2" class="form-label fs-4">Email
                             Secundario</label>
                     </div>
                     <div class="col-3">
                         <input type="text" class="form-control col-auto" id="usuario-email2" required>
+                        <div class="valid-feedback fs-5">
+                            Email Correcto!
+                        </div>
+                        <div class="invalid-feedback fs-5">
+                            Email Incorrecto, ingrese un formato correcto de Email y no debe ser igual al Principal no
+                            debe tener espacios.
+                        </div>
                     </div>
                 </div>
-                <div class="row">
+
+
+                <div class="row mb-3">
                     <div class="col-3 text-center"><label for="usuario-celular" class="form-label fs-4">Celular</label>
                     </div>
                     <div class="col-3">
                         <input type="text" class="form-control col-auto" id="usuario-celular" required>
+                        <div class="valid-feedback fs-5">
+                            Celular Correcto!
+                        </div>
+                        <div class="invalid-feedback fs-5">
+                            Celular Incorrecto! Debe tener entre 9 y 15 numeros, no debe utilizar letras.
+                        </div>
                     </div>
                 </div>
-                <div class="row">
+
+
+                <div class="row mb-3">
                     <div class="col-3 text-center"><label for="usuario-tipo" class="form-label fs-4">Tipo
                             Usuario</label>
                     </div>
                     <div class="col-3">
-                        <select class="form-select" required>
+                        <select class="form-select" id="tipo-usuario" required>
                             <option value="1">Sistema</option>
                             <option value="2">Administrador</option>
                         </select>
+                        <div class="valid-feedback fs-5">
+                            Tipo Usuario Correcto!
+                        </div>
+                        <div class="invalid-feedback fs-5">
+                            Tipo Usuario Invalido, elija las opciones mencionadas
+                        </div>
                     </div>
                 </div>
 
@@ -135,97 +202,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+    <script src="./validacion.js"></script>
 </body>
 
 </html>
-
-<form action="${context_path}/usuario/listaUsuarios" method="post"></form>
-
-<form action="${context_path}/usuario/modificarUsuario/${usuarioBuscado.id_usuario}" method="post">
-    
-        <label for="usuario-id" class="form-label fs-4">id</label>
-       <input type="number" id="usuario-id" disabled required value="${usuarioBuscado.id_usuario}">
-       
-
-   
-    <div class="row">
-        <label for="usuario-nombre" class="form-label fs-4">Nombre</label>
-       
-        <div class="col-3">
-            <input type="text" class="form-control col-auto" id="usuario-nombre" required value="${usuarioBuscado.nombre}">
-       
-        <div class="col fs-5">
-            <div class="valid-feedback">
-                Valido
-           
-            <div id="validationServerUsernameFeedback" class="invalid-feedback">
-                Ingrese un Nombre Valido porfavor
-           
-       
-   
-    <div class="row">
-        <label for="usuario-apellido"
-                class="form-label fs-4">Apellido</label>
-       
-        <div class="col-3">
-            <input type="text" class="form-control col-auto" id="usuario-apellido" required value="${usuarioBuscado.apellido}">
-       
-   
-    <div class="row">
-        <label for="usuario-alias" class="form-label fs-4">Alias</label>
-       
-        <div class="col-3">
-            <input type="text" class="form-control col-auto" id="usuario-alias" required value="${usuarioBuscado.alias}">
-       
-   
-    <div class="row">
-        <label for="usuario-contrasenia"
-                class="form-label fs-4">Contrasenia</label>
-       
-        <div class="col-3">
-            <input type="text" class="form-control col-auto" id="usuario-contrasenia" required value="${usuarioBuscado.contrasenia}">
-       
-   
-    <div class="row">
-        <label for="usuario-email1" class="form-label fs-4">Email
-                Principal</label>
-       
-        <div class="col-3">
-            <input type="text" class="form-control col-auto" id="usuario-email1" required value="${usuarioBuscado.email_principal}">
-       
-   
-    <div class="row">
-        <label for="usuario-email2" class="form-label fs-4">Email
-                Secundario</label>
-       
-        <div class="col-3">
-            <input type="text" class="form-control col-auto" id="usuario-email2" required value="${usuarioBuscado.email_secundario}">
-       
-   
-    <div class="row">
-        <label for="usuario-celular" class="form-label fs-4">Celular</label>
-       
-        <div class="col-3">
-            <input type="text" class="form-control col-auto" id="usuario-celular" required value="${usuarioBuscado.numero_celular}">
-       
-   
-    <div class="row">
-        <label for="usuario-tipo" class="form-label fs-4">Tipo
-                Usuario</label>
-       
-        <div class="col-3">
-            <select class="form-select" id="usuario-tipo" required>
-                <option value="1">Sistema</option>
-                <option value="2">Administrador</option>
-            </select>
-       
-   
-
-
-    <div class="row">
-        <div class="col text-end mb-3">
-            <a href="${context_path}/usuario/listaUsuarios" class="btn btn-secondary">Volver</a>
-            <input type="submit" class="btn btn-success" value="Modificar">
-        </div>
-    </div>
-</form>

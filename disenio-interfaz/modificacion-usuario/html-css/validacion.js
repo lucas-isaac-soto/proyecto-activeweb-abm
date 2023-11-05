@@ -15,7 +15,7 @@ const inputEmail2 = document.getElementById('usuario-email2');
 const rexCelular = new RegExp("^[\\+]?[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{3,6}$");
 const inputCelular = document.getElementById('usuario-celular');
 
-const inputTipoUsuario = document.getElementById('usuario-tipo');
+const inputTipoUsuario = document.getElementById('tipo-usuario');
 
 function actualizarInput(input,valor){
     let mensajeExito = input.parentElement.querySelector('.valid-feedback');
