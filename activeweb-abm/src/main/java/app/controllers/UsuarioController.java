@@ -1,7 +1,7 @@
 package app.controllers;
 
 import app.models.Usuario;
-import java.util.HashMap;
+import app.models.Usuario;
 import java.util.List;
 import java.util.Map;
 import org.javalite.activeweb.AppController;
@@ -25,17 +25,10 @@ public class UsuarioController extends AppController{
     }
     
     @POST
-    public void agregarUsuario(){
-        String nombre = getHttpServletRequest().getParameter("usuario-nombre");
-        String apellido = param("usuario-apellido");
-        String alias = param("usuario-alias");
-        String contrasenia = param("usuario-contrasenia");
-        String emailPrincipal = param("usuario-email1");
-        String emailSecundario = param("usuario-email2");
-        String celular = param("usuario-celular");
-        String tipoUsuario = param("usuario-tipo");
+    public void agregarUsuario(){   
+        Map parametros = params1st();
         
-        Usuario.crearUsuario(nombre, apellido, alias, contrasenia, emailPrincipal, emailSecundario, celular, tipoUsuario);
+        Usuario.crearUsuario(parametros);
         
         redirect(UsuarioController.class, "listaUsuarios");
     }
@@ -48,31 +41,12 @@ public class UsuarioController extends AppController{
     
     @POST
     public void modificarUsuario(){
-        Map<String,String> valores = new HashMap<>();
+        Map parametros = params1st();
         
-        String idUsuario = getId();
-        String nombre = getHttpServletRequest().getParameter("usuario-nombre");
-        String apellido = param("usuario-apellido");
-        String alias = param("usuario-alias");
-        String contrasenia = param("usuario-contrasenia");
-        String emailPrincipal = param("usuario-email1");
-        String emailSecundario = param("usuario-email2");
-        String celular = param("usuario-celular");
-        String tipoUsuario = param("usuario-tipo");
-            
+        Usuario.validarDatos(parametros);
         
-        valores.put("id", idUsuario);
-        valores.put("nombre", nombre);
-        valores.put("apellido", apellido);
-        valores.put("alias", alias);
-        valores.put("contrasenia", contrasenia);
-        valores.put("email1", emailPrincipal);
-        valores.put("email2", emailSecundario);
-        valores.put("celular", celular);
-        valores.put("usuario-tipo", tipoUsuario);
         
-        Usuario.modificar(valores);
-        
+        Usuario.modificar(parametros);
         redirect(UsuarioController.class, "listaUsuarios");
     }
     

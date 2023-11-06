@@ -16,6 +16,7 @@
 
         <div class="row">
             <form action="${context_path}/usuario/modificarUsuario/${usuarioBuscado.id_usuario}" onsubmit="return validarDatosUsuario()" method="post">
+                
                 <div class="row">
                     <div class="col-3 text-center"><label for="usuario-id" class="form-label fs-4">id</label></div>
                     <div class="col-1">
