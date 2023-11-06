@@ -46,6 +46,64 @@
     <!--ACA ABAJO VAN A IR LAS SEGURIDADES A CIERTOS CONTROLADORES-->
     
     <!--Restriccion total a la aplicacion, debe logearse-->
+    
+    <!--Restricciones especificas a operaciones que solo rol abm puede ejecutar-->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>WebAdmin1</web-resource-name>
+            <url-pattern>/usuario/formularioModificacion</url-pattern>
+        </web-resource-collection>
+        
+        <auth-constraint>
+            <role-name>abm</role-name>
+        </auth-constraint>
+    </security-constraint>
+    
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>WebAdmin2</web-resource-name>
+            <url-pattern>/usuario/formularioNuevo</url-pattern>
+        </web-resource-collection>
+        
+        <auth-constraint>
+            <role-name>abm</role-name>
+        </auth-constraint>
+    </security-constraint>
+    
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>WebAdmin3</web-resource-name>
+            <url-pattern>/usuario/agregarUsuario</url-pattern>
+        </web-resource-collection>
+        
+        <auth-constraint>
+            <role-name>abm</role-name>
+        </auth-constraint>
+    </security-constraint>
+    
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>WebAdmin3</web-resource-name>
+            <url-pattern>/usuario/modificarUsuario</url-pattern>
+        </web-resource-collection>
+        
+        <auth-constraint>
+            <role-name>abm</role-name>
+        </auth-constraint>
+    </security-constraint>
+    
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>WebAdmin3</web-resource-name>
+            <url-pattern>/usuario/borrarUsuario</url-pattern>
+        </web-resource-collection>
+        
+        <auth-constraint>
+            <role-name>abm</role-name>
+        </auth-constraint>
+    </security-constraint>
+    
+    <!--Restriccion basica a todo el proyecto-->
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>WebContraint</web-resource-name>

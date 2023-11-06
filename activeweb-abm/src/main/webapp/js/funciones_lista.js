@@ -1,23 +1,28 @@
 const checkbox = document.getElementById('acepto-borrar');
-    const botonBorrar = document.getElementById('boton-borrar');
+const botonBorrar = document.getElementById('boton-borrar');
 
-    checkbox.addEventListener('change', function() {
-        if (this.checked) {
-            botonBorrar.classList.remove('disabled');
-            botonBorrar.removeAttribute('disabled');
-        } else {
-            botonBorrar.classList.add('disabled');
-            botonBorrar.setAttribute('disabled', 'disabled');
-        }
-    });
-    
- const deleteButtons = document.querySelectorAll('.borrar-usuario');
- const modal = document.getElementById('ModalBorrarUsuario');
- const borrarRef = (document.querySelector('#boton-borrar')).href;
- console.log(borrarRef);
+//Evento al checkbox del modal para confirmar eliminacion
+checkbox.addEventListener('change', function() {
+    if (this.checked) {
+        botonBorrar.classList.remove('disabled');
+        botonBorrar.removeAttribute('disabled');
+    } else {
+        botonBorrar.classList.add('disabled');
+        botonBorrar.setAttribute('disabled', 'disabled');
+    }
+});
+
+
+const borrarUsuario = document.querySelectorAll('.borrar-usuario');
+const modal = document.getElementById('ModalBorrarUsuario');
+const borrarRef = (document.querySelector('#boton-borrar')).href;
+
  
- deleteButtons.forEach(button => {
-        button.addEventListener('click', function(event) {
+ /*A todos los botones le asigno la siguiente funcion la cual 
+  * sirve para cargar en el modal la informacion del usuario
+  */
+ borrarUsuario.forEach(boton => {
+        boton.addEventListener('click', function(evento) {
             const checkbox = document.querySelector('#acepto-borrar');
             checkbox.checked = false;
             

@@ -1,3 +1,4 @@
+//Esta funcion se utiliza para actualizar el display de fecha y hora
 function actualizarFechaTiempo() {
     var now = dayjs();
     var fecha = now.format('DD/MM/YYYY');

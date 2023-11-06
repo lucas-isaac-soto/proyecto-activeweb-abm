@@ -3,12 +3,26 @@ body {
     background-color: #718355;
 }
 
+.logo i {
+      color: #87986A;
+}
+
+.modificar-cuerpo {
+    background-color: #CFE1B9;
+    border-radius: 10px;
+}
+
 nav {
   background-color: #E9F5DB;
 }
 
-.logo i {
-      color: #87986A;
+nav ul {
+    margin-bottom: 0;
+}
+
+
+.paginacion {
+    background-color: #CFE1B9;
 }
 
 .tabla-lista th,
@@ -24,20 +38,6 @@ nav {
 .table-foot {
     width: 100%;
 }
-
-nav ul {
-    margin-bottom: 0;
-}
-
-.paginacion {
-    background-color: #CFE1B9;
-}
-
-.modificar-cuerpo {
-            background-color: #CFE1B9;
-            border-radius: 10px;
-}
-
 
 /* Chrome, Safari, Edge, Opera */
 #usuario-id::-webkit-outer-spin-button,

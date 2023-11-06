@@ -29,7 +29,7 @@
           </button>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Perfil</a></li>
-            <li><a class="dropdown-item" href="${context_path}/usuario/listaUsuarios">Lista Usuarios</a></li>
+            <li><a class="dropdown-item" href="${context_path}/usuario/listar">Lista Usuarios</a></li>
             <li><a class="dropdown-item" href="#">Prox. funcionalidad</a></li>
             <li>
               <hr class="dropdown-divider" />

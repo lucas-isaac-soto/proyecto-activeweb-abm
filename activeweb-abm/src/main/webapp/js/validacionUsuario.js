@@ -1,3 +1,4 @@
+//Aca defino expresiones regulares y guardo los inputs que utilizo en modificacion y altas
 const rexNombreApellido = new RegExp("^[A-ZÑa-zñ ]{3,}$");
 const inputNombre = document.getElementById('usuario-nombre');
 const inputApellido = document.getElementById('usuario-apellido');
@@ -17,6 +18,8 @@ const inputCelular = document.getElementById('usuario-celular');
 
 const inputTipoUsuario = document.getElementById('usuario-tipo');
 
+
+//Esta funcion actualiza el input pasado por parametro casi cumpla o no la expresion regular
 function actualizarInput(input,valor){
     let mensajeExito = input.parentElement.querySelector('.valid-feedback');
     let mensajeFracaso = input.parentElement.querySelector('.invalid-feedback');
@@ -36,6 +39,10 @@ function actualizarInput(input,valor){
     }
 }
 
+/*
+ * Esta funcion intenta validar los inputs con las expresiones regulares
+ * @returns {Boolean}
+ */
 function validarDatosUsuario(){
     let formularioValido = true;
 
