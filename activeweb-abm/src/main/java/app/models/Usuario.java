@@ -1,5 +1,6 @@
 package app.models;
 
+import app.exceptions.UsuarioException;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,10 +15,14 @@ import org.javalite.activejdbc.annotations.Table;
 @BelongsTo(foreignKeyName = "id_tipo_usuario", parent = TipoUsuario.class)
 public class Usuario extends Model{
     
-    public static LinkedList<String> validarDatos(Map<String,String> datosUsuario){
+    public static void validarDatos(Map<String,String> datosUsuario,Integer idUsuario) throws UsuarioException{
         LinkedList<String> errores = new LinkedList<>();
+        List<Usuario> usuarios;
         
-        List<Usuario> usuarios = Usuario.findAll();
+        if(idUsuario != null)
+            usuarios = Usuario.where("id_usuario <> ? ", idUsuario);
+        else
+            usuarios = Usuario.findAll();
         
         String regexNombreApellido = "^[A-ZÑa-zñ ]{3,}$";
         String regexAlias = "^[A-Za-z0-9_-]{3,}$";
@@ -48,8 +53,8 @@ public class Usuario extends Model{
         if(datosUsuario.get("usuario-email2") == null  || !datosUsuario.get("usuario-email2").matches(regexEmail))
             errores.add("Error en ingreso de Email Secundario, Debe tener un formato de email y no contener espacio");
         
-        if(datosUsuario.get("usuario-email2") == null  || !datosUsuario.get("usuario-email2").matches(regexEmail))
-            errores.add("Error en ingreso de Email Secundario, Debe tener un formato de email y no contener espacio");
+        if(datosUsuario.get("usuario-email2").equals(datosUsuario.get("usuario-email1")))
+            errores.add("Error en ingreso de Email Primario y Secundario, No deben ser iguales");
         
         if(datosUsuario.get("usuario-contrasenia") == null  || !datosUsuario.get("usuario-contrasenia").matches(regexContrasenia))
             errores.add("Error en ingreso de Contrasenia, Debe tener entre 7 y 16 caracteres y puede tener solo letras, numeros y - o _");
@@ -60,7 +65,8 @@ public class Usuario extends Model{
         if(datosUsuario.get("usuario-tipo") == null  || (!datosUsuario.get("usuario-tipo").equals("1") && !datosUsuario.get("usuario-tipo").equals("2")))
             errores.add("Error en ingreso de Tipo de usuario, Debe ser Sistema o Administracion");
         
-        return errores;
+        if(!errores.isEmpty())
+            throw new UsuarioException(errores);
     }
     
     

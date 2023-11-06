@@ -1,6 +1,6 @@
 package app.controllers;
 
-import app.models.Usuario;
+import app.exceptions.UsuarioException;
 import app.models.Usuario;
 import java.util.List;
 import java.util.Map;
@@ -28,9 +28,16 @@ public class UsuarioController extends AppController{
     public void agregarUsuario(){   
         Map parametros = params1st();
         
-        Usuario.crearUsuario(parametros);
-        
-        redirect(UsuarioController.class, "listaUsuarios");
+        try {
+            Usuario.validarDatos(parametros,null);
+            Usuario.crearUsuario(parametros);
+            redirect(UsuarioController.class, "listaUsuarios");
+            
+        } catch (UsuarioException e) {
+            view("errores",e.getErrores());
+            render("/system/datos-error").noLayout();
+        }
+                    
     }
     
     public void borrarUsuario(){
@@ -42,12 +49,15 @@ public class UsuarioController extends AppController{
     @POST
     public void modificarUsuario(){
         Map parametros = params1st();
-        
-        Usuario.validarDatos(parametros);
-        
-        
-        Usuario.modificar(parametros);
-        redirect(UsuarioController.class, "listaUsuarios");
+        try {
+            Usuario.validarDatos(parametros,Integer.valueOf(getId()));
+            Usuario.modificar(parametros);
+            redirect(UsuarioController.class, "listaUsuarios");
+            
+        } catch (UsuarioException e) {
+            view("errores",e.getErrores());
+            render("/system/datos-error").noLayout();
+        }
     }
     
     public void cargarModificacion(){
