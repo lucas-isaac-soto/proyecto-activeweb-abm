@@ -1,0 +1,7 @@
+<Resource name="jdbc/activeweabm" auth="Container"
+                  type="javax.sql.DataSource"
+                  driverClassName="org.postgresql.Driver"
+                  url="jdbc:postgresql://127.0.0.1:5432/segundo_tp_obligatorio"
+                  username="postgres" password="321" maxTotal="20" minIdle="10"
+                  maxWaitMillis="-1"
+        />
