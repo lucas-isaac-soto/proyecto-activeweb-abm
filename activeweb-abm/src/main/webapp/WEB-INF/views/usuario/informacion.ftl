@@ -135,7 +135,7 @@
             <div class="row">
                 <div class="col text-end mb-3">
                     <a href="${context_path}/usuario/listar" class="btn btn-secondary">Volver</a>
-                    <a href="${context_path}/usuario/cargarModificacion/${usuarioBuscado.id_usuario}" class="btn btn-warning">Modificar</a>
+                    <a href="${context_path}/usuario/formularioModificacion/${usuarioBuscado.id_usuario}" class="btn btn-warning">Modificar</a>
                 </div>
             </div>
         

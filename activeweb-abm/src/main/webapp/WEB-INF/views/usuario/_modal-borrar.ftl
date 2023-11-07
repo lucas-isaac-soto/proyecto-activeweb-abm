@@ -50,9 +50,9 @@
                 </button>
 
                 <!--NO OLVIDAR PONER LA URL AL CONTROLADOR QUE CIERRA LA SESION-->
-                <p id="url-borrar" style="display:none;">${context_path}/usuario/borrarUsuario/</p>
+                <p id="url-borrar" style="display:none;">${context_path}/usuario/borrar/</p>
 
-                <a id="boton-borrar" href="${context_path}/usuario/borrarUsuario/" class="btn btn-danger disabled">
+                <a id="boton-borrar" href="${context_path}/usuario/borrar/" class="btn btn-danger disabled">
                     Borrar Usuario
                 </a>
             </div>

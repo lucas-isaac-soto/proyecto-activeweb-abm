@@ -15,20 +15,80 @@ import org.javalite.activejdbc.annotations.Table;
 @BelongsTo(foreignKeyName = "id_tipo_usuario", parent = TipoUsuario.class)
 public class Usuario extends Model{
     
-    public static void validarDatos(Map<String,String> datosUsuario,Integer idUsuario) throws UsuarioException{
+    //Busco todos los usuarios de la base de datos ordenados por fecha_alta e incluso traigo su tipo de usuario asociado
+    public static List<Usuario> obtenerTodos(){
+        return Usuario.findAll().orderBy("fecha_alta").include(TipoUsuario.class);
+    }
+    //Busco un usuario especificado por su id
+    public static Usuario buscar(int usuarioId) throws UsuarioException{
         LinkedList<String> errores = new LinkedList<>();
-        List<Usuario> usuarios;
+        Usuario buscado = Usuario.findById(usuarioId);
         
-        if(idUsuario != null)
-            usuarios = Usuario.where("id_usuario <> ? ", idUsuario);
-        else
-            usuarios = Usuario.findAll();
+        if(buscado == null){
+            errores.add("USUARIO NO EXISTE");
+            throw new UsuarioException(errores);
+        }
+            
         
+        return buscado;   
+    }
+    
+    //Creacion de un Usuario
+    public static void crear(Map<String,String> parametros){
+        Usuario nuevo = new Usuario();
+        
+        nuevo.set("nombre", parametros.get("usuario-nombre"));
+        nuevo.set("apellido",parametros.get("usuario-apellido"));
+        nuevo.set("alias", parametros.get("usuario-alias"));
+        nuevo.set("contrasenia", parametros.get("usuario-contrasenia"));
+        nuevo.set("email_principal",parametros.get("usuario-email1"));
+        nuevo.set("email_secundario",parametros.get("usuario-email2"));
+        nuevo.set("numero_celular",parametros.get("usuario-celular"));
+        nuevo.set("id_tipo_usuario",Integer.valueOf(parametros.get("usuario-tipo")));
+        Date fecha = new Date();
+        nuevo.setTimestamp("fecha_alta",fecha.getTime());
+        
+        nuevo.saveIt();
+    }
+    
+    //Modificacion de un usuario especificado por su ID
+    public static void modificar(Map<String,String> parametros) {
+        Usuario modificado = Usuario.findById(Integer.valueOf( parametros.get("id")));
+        
+        modificado.set("nombre", parametros.get("usuario-nombre"));
+        modificado.set("apellido",parametros.get("usuario-apellido"));
+        modificado.set("alias", parametros.get("usuario-alias"));
+        modificado.set("contrasenia", parametros.get("usuario-contrasenia"));
+        modificado.set("email_principal",parametros.get("usuario-email1"));
+        modificado.set("email_secundario",parametros.get("usuario-email2"));
+        modificado.set("numero_celular",parametros.get("usuario-celular"));
+        modificado.set("id_tipo_usuario",Integer.valueOf(parametros.get("usuario-tipo")));
+        
+        modificado.saveIt();
+    }
+    
+    //Eliminacion Fisica de un Usuario
+    public static void borrar(int idUsuario){
+       Usuario.delete("id_usuario = ?" ,idUsuario);
+    }
+    
+    //Funcion que valida los datos ingresados de un Usuario
+    public static void validarDatos(Map<String,String> datosUsuario,Integer idUsuario) throws UsuarioException{
         String regexNombreApellido = "^[A-ZÑa-zñ ]{3,}$";
         String regexAlias = "^[A-Za-z0-9_-]{3,}$";
         String regexEmail = "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$";
         String regexContrasenia = "^[A-Za-z0-9_-]{7,16}$";
         String regexCelular = "^[\\+]?[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{3,6}$";
+        
+        LinkedList<String> errores = new LinkedList<>();
+        List<Usuario> usuarios;
+        
+        //Segun se valide para crear un nuevo usuario o modificar un usuario existente
+        if(idUsuario != null)
+            usuarios = Usuario.where("id_usuario <> ? ", idUsuario);
+        else
+            usuarios = Usuario.findAll();
+        
         
         if( datosUsuario.get("usuario-nombre") == null  || !datosUsuario.get("usuario-nombre").matches(regexNombreApellido))
             errores.add("Error en ingreso de Nombre, deben ser solo letreas y de 3 o mas, sin numeros ni caracteres especiales");
@@ -42,6 +102,7 @@ public class Usuario extends Model{
         if(datosUsuario.get("usuario-email1") == null  || !datosUsuario.get("usuario-email1").matches(regexEmail))
             errores.add("Error en ingreso de Email Principal, Debe tener un formato de email y no contener espacio");
         
+        //Importante buscar si ya existe el alias o el email a modificar o crear
         for(Usuario usuarioBuscando : usuarios){
             if(usuarioBuscando.get("alias").equals(datosUsuario.get("usuario-alias")))
                 errores.add("Error en ingreso de Alias, usted elijio un alias que ya lo tiene otro usuario");
@@ -67,55 +128,6 @@ public class Usuario extends Model{
         
         if(!errores.isEmpty())
             throw new UsuarioException(errores);
-    }
-    
-    
-    public static List<Usuario> obtenerTodosUsuario(){
-        return Usuario.findAll().orderBy("fecha_alta").include(TipoUsuario.class);
-    }
-    
-    public static void crearUsuario(Map<String,String> parametros){
         
-        //validaciones
-        Usuario nuevo = new Usuario();
-        nuevo.set("nombre", parametros.get("usuario-nombre"));
-        nuevo.set("apellido",parametros.get("usuario-apellido"));
-        nuevo.set("alias", parametros.get("usuario-alias"));
-        nuevo.set("contrasenia", parametros.get("usuario-contrasenia"));
-        nuevo.set("email_principal",parametros.get("usuario-email1"));
-        nuevo.set("email_secundario",parametros.get("usuario-email2"));
-        nuevo.set("numero_celular",parametros.get("usuario-celular"));
-        
-        nuevo.set("id_tipo_usuario",Integer.valueOf(parametros.get("usuario-tipo")));
-        
-        Date fecha = new Date();
-        nuevo.setTimestamp("fecha_alta",fecha.getTime());
-        
-        nuevo.saveIt();
-    }
-    
-    public static Usuario buscarUsuario(int usuarioId){
-        return Usuario.findById(usuarioId);
-        
-    }
-    
-    public static void borrar(int idUsuario){
-        //validaciones
-       Usuario.delete("id_usuario = ?" ,idUsuario);
-    }
-    
-    public static void modificar(Map<String,String> parametros) {
-        Usuario modificado = Usuario.findById(Integer.valueOf( parametros.get("id")));
-        
-        modificado.set("nombre", parametros.get("usuario-nombre"));
-        modificado.set("apellido",parametros.get("usuario-apellido"));
-        modificado.set("alias", parametros.get("usuario-alias"));
-        modificado.set("contrasenia", parametros.get("usuario-contrasenia"));
-        modificado.set("email_principal",parametros.get("usuario-email1"));
-        modificado.set("email_secundario",parametros.get("usuario-email2"));
-        modificado.set("numero_celular",parametros.get("usuario-celular"));
-        modificado.set("id_tipo_usuario",Integer.valueOf(parametros.get("usuario-tipo")));
-        
-        modificado.saveIt();
     }
 }

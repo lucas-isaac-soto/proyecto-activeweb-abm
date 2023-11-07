@@ -17,7 +17,7 @@
         <div class="row">
             
             <!--Formulario que envia input al controlador correspondiente si se validan los inputs antes-->
-            <form action="${context_path}/usuario/agregarUsuario" method="post" onsubmit="return validarDatosUsuario()">
+            <form action="${context_path}/usuario/agregar" method="post" onsubmit="return validarDatosUsuario()">
                 
                 <!--Nombre label + input y mensajes de exito y fallo-->
                 <div class="row">

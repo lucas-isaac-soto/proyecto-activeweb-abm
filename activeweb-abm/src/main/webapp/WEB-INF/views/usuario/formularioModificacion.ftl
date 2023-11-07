@@ -17,7 +17,7 @@
         <div class="row">
 
             <!--Formulario que envia input al controlador correspondiente si se validan los inputs antes-->
-            <form action="${context_path}/usuario/modificarUsuario/${usuarioBuscado.id_usuario}" onsubmit="return validarDatosUsuario()" method="post">
+            <form action="${context_path}/usuario/modificar/${usuarioBuscado.id_usuario}" onsubmit="return validarDatosUsuario()" method="post">
                 
                 <!--ID label + input-->
                 <div class="row">
