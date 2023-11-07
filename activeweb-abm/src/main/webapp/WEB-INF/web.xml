@@ -73,7 +73,7 @@
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>WebAdmin3</web-resource-name>
-            <url-pattern>/usuario/agregarUsuario</url-pattern>
+            <url-pattern>/usuario/agregar/*</url-pattern>
         </web-resource-collection>
         
         <auth-constraint>
@@ -84,7 +84,7 @@
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>WebAdmin3</web-resource-name>
-            <url-pattern>/usuario/modificarUsuario</url-pattern>
+            <url-pattern>/usuario/modificar/*</url-pattern>
         </web-resource-collection>
         
         <auth-constraint>
@@ -95,7 +95,7 @@
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>WebAdmin3</web-resource-name>
-            <url-pattern>/usuario/borrarUsuario</url-pattern>
+            <url-pattern>/usuario/borrar/*</url-pattern>
         </web-resource-collection>
         
         <auth-constraint>
